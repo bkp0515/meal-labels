@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo, createContext, useContext, useRef } from 'react';
+import React, { useState, useEffect, useMemo, createContext, useContext } from 'react';
 import { 
   Calculator, 
   Printer, 
@@ -36,107 +36,107 @@ const CATEGORIES = ['Protein/Main', 'Vegetable', 'Fruit', 'Grain', 'Misc/Snack']
 
 const INITIAL_FOOD_CATALOG = [
   // --- FRUIT ---
-  { id: 'fr1', name: 'Apple Slices', category: 'Fruit', maxPerContainer: 5.0, s_1_8: '', s_1_4: '0.11', s_1_2: '0.22', s_3_4: '', ea_label: '', ea_value: null },
-  { id: 'fr2', name: 'Fresh Apple Slice', category: 'Fruit', maxPerContainer: 5.0, s_1_8: '', s_1_4: '0.11', s_1_2: '0.22', s_3_4: '', ea_label: '', ea_value: null },
-  { id: 'fr3', name: 'Cinnamon Apple Slices', category: 'Fruit', maxPerContainer: 4.0, s_1_8: '', s_1_4: '0.10', s_1_2: '0.20', s_3_4: '', ea_label: '', ea_value: null },
-  { id: 'fr4', name: 'Cantaloupe', category: 'Fruit', maxPerContainer: 4.0, s_1_8: '', s_1_4: '0.10', s_1_2: '0.20', s_3_4: '', ea_label: '', ea_value: null },
-  { id: 'fr5', name: 'Honeydew', category: 'Fruit', maxPerContainer: 4.0, s_1_8: '', s_1_4: '0.10', s_1_2: '0.20', s_3_4: '', ea_label: '', ea_value: null },
-  { id: 'fr6', name: 'Fruit Salad', category: 'Fruit', maxPerContainer: 5.0, s_1_8: '', s_1_4: '0.11', s_1_2: '0.22', s_3_4: '', ea_label: '', ea_value: null },
-  { id: 'fr7', name: 'Fruit Cocktail', category: 'Fruit', maxPerContainer: 4.0, s_1_8: '', s_1_4: '0.12', s_1_2: '0.24', s_3_4: '', ea_label: '', ea_value: null },
-  { id: 'fr8', name: 'Mango', category: 'Fruit', maxPerContainer: 4.0, s_1_8: '', s_1_4: '0.12', s_1_2: '0.24', s_3_4: '', ea_label: '', ea_value: null },
-  { id: 'fr9', name: 'Oranges', category: 'Fruit', maxPerContainer: 5.0, s_1_8: '', s_1_4: '0.11', s_1_2: '0.22', s_3_4: '', ea_label: '', ea_value: null },
-  { id: 'fr10', name: 'Peaches', category: 'Fruit', maxPerContainer: 5.0, s_1_8: '', s_1_4: '0.11', s_1_2: '0.22', s_3_4: '', ea_label: '', ea_value: null },
-  { id: 'fr11', name: 'Pears', category: 'Fruit', maxPerContainer: 5.0, s_1_8: '', s_1_4: '0.11', s_1_2: '0.22', s_3_4: '', ea_label: '', ea_value: null },
-  { id: 'fr12', name: 'Pineapple', category: 'Fruit', maxPerContainer: 5.0, s_1_8: '', s_1_4: '0.11', s_1_2: '0.22', s_3_4: '', ea_label: '', ea_value: null },
-  { id: 'fr13', name: 'Blueberries', category: 'Fruit', maxPerContainer: 4.0, s_1_8: '', s_1_4: '0.12', s_1_2: '0.24', s_3_4: '', ea_label: '', ea_value: null },
-  { id: 'fr14', name: 'Banana', category: 'Fruit', maxPerContainer: 5.0, s_1_8: '', s_1_4: '0.14', s_1_2: '0.28', s_3_4: '', ea_label: '', ea_value: null },
-  { id: 'fr15', name: 'Apple Sauce', category: 'Fruit', maxPerContainer: 5.0, s_1_8: '', s_1_4: '0.12', s_1_2: '0.24', s_3_4: '', ea_label: '', ea_value: null },
-  { id: 'fr16', name: 'Manderins', category: 'Fruit', maxPerContainer: 5.0, s_1_8: '', s_1_4: '0.12', s_1_2: '0.24', s_3_4: '', ea_label: '', ea_value: null },
+  { id: 'fr1', name: 'Apple Slices', category: 'Fruit', maxPerContainer: 5.0, s_1_16: '', s_1_8: '', s_1_4: '0.11', s_1_2: '0.22', s_3_4: '', ea_label: '', ea_value: null },
+  { id: 'fr2', name: 'Fresh Apple Slice', category: 'Fruit', maxPerContainer: 5.0, s_1_16: '', s_1_8: '', s_1_4: '0.11', s_1_2: '0.22', s_3_4: '', ea_label: '', ea_value: null },
+  { id: 'fr3', name: 'Cinnamon Apple Slices', category: 'Fruit', maxPerContainer: 4.0, s_1_16: '', s_1_8: '', s_1_4: '0.10', s_1_2: '0.20', s_3_4: '', ea_label: '', ea_value: null },
+  { id: 'fr4', name: 'Cantaloupe', category: 'Fruit', maxPerContainer: 4.0, s_1_16: '', s_1_8: '', s_1_4: '0.10', s_1_2: '0.20', s_3_4: '', ea_label: '', ea_value: null },
+  { id: 'fr5', name: 'Honeydew', category: 'Fruit', maxPerContainer: 4.0, s_1_16: '', s_1_8: '', s_1_4: '0.10', s_1_2: '0.20', s_3_4: '', ea_label: '', ea_value: null },
+  { id: 'fr6', name: 'Fruit Salad', category: 'Fruit', maxPerContainer: 5.0, s_1_16: '', s_1_8: '', s_1_4: '0.11', s_1_2: '0.22', s_3_4: '', ea_label: '', ea_value: null },
+  { id: 'fr7', name: 'Fruit Cocktail', category: 'Fruit', maxPerContainer: 4.0, s_1_16: '', s_1_8: '', s_1_4: '0.12', s_1_2: '0.24', s_3_4: '', ea_label: '', ea_value: null },
+  { id: 'fr8', name: 'Mango', category: 'Fruit', maxPerContainer: 4.0, s_1_16: '', s_1_8: '', s_1_4: '0.12', s_1_2: '0.24', s_3_4: '', ea_label: '', ea_value: null },
+  { id: 'fr9', name: 'Oranges', category: 'Fruit', maxPerContainer: 5.0, s_1_16: '', s_1_8: '', s_1_4: '0.11', s_1_2: '0.22', s_3_4: '', ea_label: '', ea_value: null },
+  { id: 'fr10', name: 'Peaches', category: 'Fruit', maxPerContainer: 5.0, s_1_16: '', s_1_8: '', s_1_4: '0.11', s_1_2: '0.22', s_3_4: '', ea_label: '', ea_value: null },
+  { id: 'fr11', name: 'Pears', category: 'Fruit', maxPerContainer: 5.0, s_1_16: '', s_1_8: '', s_1_4: '0.11', s_1_2: '0.22', s_3_4: '', ea_label: '', ea_value: null },
+  { id: 'fr12', name: 'Pineapple', category: 'Fruit', maxPerContainer: 5.0, s_1_16: '', s_1_8: '', s_1_4: '0.11', s_1_2: '0.22', s_3_4: '', ea_label: '', ea_value: null },
+  { id: 'fr13', name: 'Blueberries', category: 'Fruit', maxPerContainer: 4.0, s_1_16: '', s_1_8: '', s_1_4: '0.12', s_1_2: '0.24', s_3_4: '', ea_label: '', ea_value: null },
+  { id: 'fr14', name: 'Banana', category: 'Fruit', maxPerContainer: 5.0, s_1_16: '', s_1_8: '', s_1_4: '0.14', s_1_2: '0.28', s_3_4: '', ea_label: '', ea_value: null },
+  { id: 'fr15', name: 'Apple Sauce', category: 'Fruit', maxPerContainer: 5.0, s_1_16: '', s_1_8: '', s_1_4: '0.12', s_1_2: '0.24', s_3_4: '', ea_label: '', ea_value: null },
+  { id: 'fr16', name: 'Manderins', category: 'Fruit', maxPerContainer: 5.0, s_1_16: '', s_1_8: '', s_1_4: '0.12', s_1_2: '0.24', s_3_4: '', ea_label: '', ea_value: null },
 
   // --- VEGETABLE ---
-  { id: 'vg1', name: 'Broccoli', category: 'Vegetable', maxPerContainer: 2.5, s_1_8: '', s_1_4: '0.10', s_1_2: '0.20', s_3_4: '', ea_label: '', ea_value: null },
-  { id: 'vg2', name: 'Cauliflower', category: 'Vegetable', maxPerContainer: 2.5, s_1_8: '', s_1_4: '0.10', s_1_2: '0.20', s_3_4: '', ea_label: '', ea_value: null },
-  { id: 'vg3', name: 'Normandy Blend', category: 'Vegetable', maxPerContainer: 2.5, s_1_8: '', s_1_4: '0.10', s_1_2: '0.20', s_3_4: '', ea_label: '', ea_value: null },
-  { id: 'vg4', name: 'Carrots', category: 'Vegetable', maxPerContainer: 2.5, s_1_8: '', s_1_4: '0.10', s_1_2: '0.20', s_3_4: '', ea_label: '', ea_value: null },
-  { id: 'vg5', name: 'Peas n Carrot', category: 'Vegetable', maxPerContainer: 2.5, s_1_8: '', s_1_4: '0.10', s_1_2: '0.20', s_3_4: '', ea_label: '', ea_value: null },
-  { id: 'vg6', name: 'Peas', category: 'Vegetable', maxPerContainer: 2.5, s_1_8: '', s_1_4: '0.10', s_1_2: '0.20', s_3_4: '', ea_label: '', ea_value: null },
-  { id: 'vg7', name: 'Corn', category: 'Vegetable', maxPerContainer: 2.5, s_1_8: '', s_1_4: '0.10', s_1_2: '0.20', s_3_4: '', ea_label: '', ea_value: null },
-  { id: 'vg8', name: 'Mix Veggies', category: 'Vegetable', maxPerContainer: 2.5, s_1_8: '', s_1_4: '0.10', s_1_2: '0.20', s_3_4: '', ea_label: '', ea_value: null },
-  { id: 'vg9', name: 'Green Beans', category: 'Vegetable', maxPerContainer: 2.5, s_1_8: '', s_1_4: '0.10', s_1_2: '0.20', s_3_4: '', ea_label: '', ea_value: null },
-  { id: 'vg10', name: 'Mash Potato', category: 'Vegetable', maxPerContainer: 2.5, s_1_8: '', s_1_4: '0.14', s_1_2: '0.28', s_3_4: '', ea_label: '', ea_value: null },
-  { id: 'vg11', name: 'Oregon Mix Veggies', category: 'Vegetable', maxPerContainer: 2.5, s_1_8: '', s_1_4: '0.10', s_1_2: '0.20', s_3_4: '', ea_label: '', ea_value: null },
-  { id: 'vg12', name: 'Pinto Beans', category: 'Vegetable', maxPerContainer: 2.5, s_1_8: '0.06', s_1_4: '0.12', s_1_2: '0.24', s_3_4: '', ea_label: '', ea_value: null },
-  { id: 'vg13', name: 'Black Beans', category: 'Vegetable', maxPerContainer: 2.5, s_1_8: '0.06', s_1_4: '0.12', s_1_2: '0.24', s_3_4: '', ea_label: '', ea_value: null },
-  { id: 'vg14', name: 'Red Beans', category: 'Vegetable', maxPerContainer: 2.5, s_1_8: '0.06', s_1_4: '0.12', s_1_2: '0.24', s_3_4: '', ea_label: '', ea_value: null },
-  { id: 'vg15', name: 'Refried Beans', category: 'Vegetable', maxPerContainer: 2.5, s_1_8: '0.07', s_1_4: '0.14', s_1_2: '0.28', s_3_4: '', ea_label: '', ea_value: null },
+  { id: 'vg1', name: 'Broccoli', category: 'Vegetable', maxPerContainer: 2.5, s_1_16: '', s_1_8: '', s_1_4: '0.10', s_1_2: '0.20', s_3_4: '', ea_label: '', ea_value: null },
+  { id: 'vg2', name: 'Cauliflower', category: 'Vegetable', maxPerContainer: 2.5, s_1_16: '', s_1_8: '', s_1_4: '0.10', s_1_2: '0.20', s_3_4: '', ea_label: '', ea_value: null },
+  { id: 'vg3', name: 'Normandy Blend', category: 'Vegetable', maxPerContainer: 2.5, s_1_16: '', s_1_8: '', s_1_4: '0.10', s_1_2: '0.20', s_3_4: '', ea_label: '', ea_value: null },
+  { id: 'vg4', name: 'Carrots', category: 'Vegetable', maxPerContainer: 2.5, s_1_16: '', s_1_8: '', s_1_4: '0.10', s_1_2: '0.20', s_3_4: '', ea_label: '', ea_value: null },
+  { id: 'vg5', name: 'Peas n Carrot', category: 'Vegetable', maxPerContainer: 2.5, s_1_16: '', s_1_8: '', s_1_4: '0.10', s_1_2: '0.20', s_3_4: '', ea_label: '', ea_value: null },
+  { id: 'vg6', name: 'Peas', category: 'Vegetable', maxPerContainer: 2.5, s_1_16: '', s_1_8: '', s_1_4: '0.10', s_1_2: '0.20', s_3_4: '', ea_label: '', ea_value: null },
+  { id: 'vg7', name: 'Corn', category: 'Vegetable', maxPerContainer: 2.5, s_1_16: '', s_1_8: '', s_1_4: '0.10', s_1_2: '0.20', s_3_4: '', ea_label: '', ea_value: null },
+  { id: 'vg8', name: 'Mix Veggies', category: 'Vegetable', maxPerContainer: 2.5, s_1_16: '', s_1_8: '', s_1_4: '0.10', s_1_2: '0.20', s_3_4: '', ea_label: '', ea_value: null },
+  { id: 'vg9', name: 'Green Beans', category: 'Vegetable', maxPerContainer: 2.5, s_1_16: '', s_1_8: '', s_1_4: '0.10', s_1_2: '0.20', s_3_4: '', ea_label: '', ea_value: null },
+  { id: 'vg10', name: 'Mash Potato', category: 'Vegetable', maxPerContainer: 2.5, s_1_16: '', s_1_8: '', s_1_4: '0.14', s_1_2: '0.28', s_3_4: '', ea_label: '', ea_value: null },
+  { id: 'vg11', name: 'Oregon Mix Veggies', category: 'Vegetable', maxPerContainer: 2.5, s_1_16: '', s_1_8: '', s_1_4: '0.10', s_1_2: '0.20', s_3_4: '', ea_label: '', ea_value: null },
+  { id: 'vg12', name: 'Pinto Beans', category: 'Vegetable', maxPerContainer: 2.5, s_1_16: '', s_1_8: '0.06', s_1_4: '0.12', s_1_2: '0.24', s_3_4: '', ea_label: '', ea_value: null },
+  { id: 'vg13', name: 'Black Beans', category: 'Vegetable', maxPerContainer: 2.5, s_1_16: '', s_1_8: '0.06', s_1_4: '0.12', s_1_2: '0.24', s_3_4: '', ea_label: '', ea_value: null },
+  { id: 'vg14', name: 'Red Beans', category: 'Vegetable', maxPerContainer: 2.5, s_1_16: '', s_1_8: '0.06', s_1_4: '0.12', s_1_2: '0.24', s_3_4: '', ea_label: '', ea_value: null },
+  { id: 'vg15', name: 'Refried Beans', category: 'Vegetable', maxPerContainer: 2.5, s_1_16: '', s_1_8: '0.07', s_1_4: '0.14', s_1_2: '0.28', s_3_4: '', ea_label: '', ea_value: null },
 
   // --- GRAIN ---
-  { id: 'gr1', name: 'Corn Flakes', category: 'Grain', maxPerContainer: 2.0, s_1_8: '', s_1_4: '', s_1_2: '', s_3_4: '0.06', ea_label: '', ea_value: null },
-  { id: 'gr2', name: 'WG Corn Chex', category: 'Grain', maxPerContainer: 2.0, s_1_8: '', s_1_4: '', s_1_2: '', s_3_4: '0.06', ea_label: '', ea_value: null },
-  { id: 'gr3', name: 'WG Rice Chex', category: 'Grain', maxPerContainer: 2.0, s_1_8: '', s_1_4: '', s_1_2: '', s_3_4: '0.06', ea_label: '', ea_value: null },
-  { id: 'gr4', name: 'WG Cheerios', category: 'Grain', maxPerContainer: 50.0, s_1_8: '', s_1_4: '', s_1_2: '', s_3_4: '', ea_label: '1 Ea', ea_value: 1 },
-  { id: 'gr5', name: 'WG Waffles', category: 'Grain', maxPerContainer: 50.0, s_1_8: '', s_1_4: '', s_1_2: '', s_3_4: '', ea_label: '1 Ea', ea_value: 1 },
-  { id: 'gr6', name: 'Wg French Toast', category: 'Grain', maxPerContainer: 50.0, s_1_8: '', s_1_4: '', s_1_2: '', s_3_4: '', ea_label: '1 Ea', ea_value: 1 },
-  { id: 'gr7', name: 'Wg Pancakes', category: 'Grain', maxPerContainer: 50.0, s_1_8: '', s_1_4: '', s_1_2: '', s_3_4: '', ea_label: '1 Ea', ea_value: 1 },
-  { id: 'gr8', name: 'Wg Pancakes Bites', category: 'Grain', maxPerContainer: 100.0, s_1_8: '', s_1_4: '', s_1_2: '', s_3_4: '', ea_label: '3 Ea', ea_value: 3 },
-  { id: 'gr9', name: 'Wg Bread Slice', category: 'Grain', maxPerContainer: 50.0, s_1_8: '', s_1_4: '', s_1_2: '', s_3_4: '', ea_label: '1 Ea', ea_value: 1 },
-  { id: 'gr10', name: 'Wg Cinnamon Raising Bread', category: 'Grain', maxPerContainer: 50.0, s_1_8: '', s_1_4: '', s_1_2: '', s_3_4: '', ea_label: '1 Ea', ea_value: 1 },
-  { id: 'gr11', name: 'Biscuit', category: 'Grain', maxPerContainer: 50.0, s_1_8: '', s_1_4: '', s_1_2: '', s_3_4: '', ea_label: '1 Ea', ea_value: 1 },
-  { id: 'gr12', name: 'English Muffins', category: 'Grain', maxPerContainer: 50.0, s_1_8: '', s_1_4: '', s_1_2: '', s_3_4: '', ea_label: '1 Ea', ea_value: 1 },
-  { id: 'gr13', name: 'Oat Meals', category: 'Grain', maxPerContainer: 2.0, s_1_8: '0.08', s_1_4: '', s_1_2: '', s_3_4: '', ea_label: '', ea_value: null },
-  { id: 'gr14', name: 'Ritz', category: 'Grain', maxPerContainer: 150.0, s_1_8: '', s_1_4: '', s_1_2: '', s_3_4: '', ea_label: '5 Ea', ea_value: 5 },
-  { id: 'gr15', name: 'Pretzels Bites', category: 'Grain', maxPerContainer: 100.0, s_1_8: '', s_1_4: '', s_1_2: '', s_3_4: '', ea_label: '3 Ea', ea_value: 3 },
-  { id: 'gr16', name: 'WG sweet Potato Crackers', category: 'Grain', maxPerContainer: 2.0, s_1_8: '0.06', s_1_4: '', s_1_2: '', s_3_4: '', ea_label: '', ea_value: null },
-  { id: 'gr17', name: 'Animal Crackers', category: 'Grain', maxPerContainer: 2.0, s_1_8: '0.06', s_1_4: '', s_1_2: '', s_3_4: '', ea_label: '', ea_value: null },
-  { id: 'gr18', name: 'Saltine Crackers', category: 'Grain', maxPerContainer: 150.0, s_1_8: '', s_1_4: '', s_1_2: '', s_3_4: '', ea_label: '5 Ea', ea_value: 5 },
-  { id: 'gr19', name: 'Graham Crackers', category: 'Grain', maxPerContainer: 50.0, s_1_8: '', s_1_4: '', s_1_2: '', s_3_4: '', ea_label: '1 Ea', ea_value: 1 },
-  { id: 'gr20', name: 'Pitta', category: 'Grain', maxPerContainer: 50.0, s_1_8: '', s_1_4: '', s_1_2: '', s_3_4: '', ea_label: '1/4 Ea', ea_value: 0.25 },
-  { id: 'gr21', name: 'Bagel', category: 'Grain', maxPerContainer: 50.0, s_1_8: '', s_1_4: '', s_1_2: '', s_3_4: '', ea_label: '1 Ea', ea_value: 1 },
-  { id: 'gr22', name: 'WG Bun', category: 'Grain', maxPerContainer: 50.0, s_1_8: '', s_1_4: '', s_1_2: '', s_3_4: '', ea_label: '1 Ea', ea_value: 1 },
-  { id: 'gr23', name: 'WG Sub', category: 'Grain', maxPerContainer: 50.0, s_1_8: '', s_1_4: '', s_1_2: '', s_3_4: '', ea_label: '1 Ea', ea_value: 1 },
-  { id: 'gr24', name: 'WG Tortilla', category: 'Grain', maxPerContainer: 50.0, s_1_8: '', s_1_4: '', s_1_2: '', s_3_4: '', ea_label: '1 Ea', ea_value: 1 },
-  { id: 'gr25', name: 'Wg Brown Rice', category: 'Grain', maxPerContainer: 2.5, s_1_8: '', s_1_4: '0.10', s_1_2: '0.20', s_3_4: '', ea_label: '', ea_value: null },
-  { id: 'gr26', name: 'Wg Penne Pasta', category: 'Grain', maxPerContainer: 2.5, s_1_8: '', s_1_4: '0.10', s_1_2: '0.20', s_3_4: '', ea_label: '', ea_value: null },
-  { id: 'gr27', name: 'Wg Elbow Pasta', category: 'Grain', maxPerContainer: 2.5, s_1_8: '', s_1_4: '0.10', s_1_2: '0.20', s_3_4: '', ea_label: '', ea_value: null },
-  { id: 'gr28', name: 'Wg Quinoa', category: 'Grain', maxPerContainer: 2.5, s_1_8: '', s_1_4: '0.10', s_1_2: '0.20', s_3_4: '', ea_label: '', ea_value: null },
-  { id: 'gr29', name: 'Wg Rotini Pasta', category: 'Grain', maxPerContainer: 2.5, s_1_8: '', s_1_4: '0.10', s_1_2: '0.20', s_3_4: '', ea_label: '', ea_value: null },
-  { id: 'gr30', name: 'Wg Spaghetti Pasta', category: 'Grain', maxPerContainer: 2.5, s_1_8: '', s_1_4: '0.10', s_1_2: '0.20', s_3_4: '', ea_label: '', ea_value: null },
-  { id: 'gr31', name: 'Granola', category: 'Grain', maxPerContainer: 2.5, s_1_8: '0.04', s_1_4: '0.08', s_1_2: '0.16', s_3_4: '', ea_label: '', ea_value: null },
+  { id: 'gr1', name: 'Corn Flakes', category: 'Grain', maxPerContainer: 2.0, s_1_16: '', s_1_8: '', s_1_4: '', s_1_2: '', s_3_4: '0.06', ea_label: '', ea_value: null },
+  { id: 'gr2', name: 'WG Corn Chex', category: 'Grain', maxPerContainer: 2.0, s_1_16: '', s_1_8: '', s_1_4: '', s_1_2: '', s_3_4: '0.06', ea_label: '', ea_value: null },
+  { id: 'gr3', name: 'WG Rice Chex', category: 'Grain', maxPerContainer: 2.0, s_1_16: '', s_1_8: '', s_1_4: '', s_1_2: '', s_3_4: '0.06', ea_label: '', ea_value: null },
+  { id: 'gr4', name: 'WG Cheerios', category: 'Grain', maxPerContainer: 50.0, s_1_16: '', s_1_8: '', s_1_4: '', s_1_2: '', s_3_4: '', ea_label: '1 Ea', ea_value: 1 },
+  { id: 'gr5', name: 'WG Waffles', category: 'Grain', maxPerContainer: 50.0, s_1_16: '', s_1_8: '', s_1_4: '', s_1_2: '', s_3_4: '', ea_label: '1 Ea', ea_value: 1 },
+  { id: 'gr6', name: 'Wg French Toast', category: 'Grain', maxPerContainer: 50.0, s_1_16: '', s_1_8: '', s_1_4: '', s_1_2: '', s_3_4: '', ea_label: '1 Ea', ea_value: 1 },
+  { id: 'gr7', name: 'Wg Pancakes', category: 'Grain', maxPerContainer: 50.0, s_1_16: '', s_1_8: '', s_1_4: '', s_1_2: '', s_3_4: '', ea_label: '1 Ea', ea_value: 1 },
+  { id: 'gr8', name: 'Wg Pancakes Bites', category: 'Grain', maxPerContainer: 100.0, s_1_16: '', s_1_8: '', s_1_4: '', s_1_2: '', s_3_4: '', ea_label: '3 Ea', ea_value: 3 },
+  { id: 'gr9', name: 'Wg Bread Slice', category: 'Grain', maxPerContainer: 50.0, s_1_16: '', s_1_8: '', s_1_4: '', s_1_2: '', s_3_4: '', ea_label: '1 Ea', ea_value: 1 },
+  { id: 'gr10', name: 'Wg Cinnamon Raising Bread', category: 'Grain', maxPerContainer: 50.0, s_1_16: '', s_1_8: '', s_1_4: '', s_1_2: '', s_3_4: '', ea_label: '1 Ea', ea_value: 1 },
+  { id: 'gr11', name: 'Biscuit', category: 'Grain', maxPerContainer: 50.0, s_1_16: '', s_1_8: '', s_1_4: '', s_1_2: '', s_3_4: '', ea_label: '1 Ea', ea_value: 1 },
+  { id: 'gr12', name: 'English Muffins', category: 'Grain', maxPerContainer: 50.0, s_1_16: '', s_1_8: '', s_1_4: '', s_1_2: '', s_3_4: '', ea_label: '1 Ea', ea_value: 1 },
+  { id: 'gr13', name: 'Oat Meals', category: 'Grain', maxPerContainer: 2.0, s_1_16: '', s_1_8: '0.08', s_1_4: '', s_1_2: '', s_3_4: '', ea_label: '', ea_value: null },
+  { id: 'gr14', name: 'Ritz', category: 'Grain', maxPerContainer: 150.0, s_1_16: '', s_1_8: '', s_1_4: '', s_1_2: '', s_3_4: '', ea_label: '5 Ea', ea_value: 5 },
+  { id: 'gr15', name: 'Pretzels Bites', category: 'Grain', maxPerContainer: 100.0, s_1_16: '', s_1_8: '', s_1_4: '', s_1_2: '', s_3_4: '', ea_label: '3 Ea', ea_value: 3 },
+  { id: 'gr16', name: 'WG sweet Potato Crackers', category: 'Grain', maxPerContainer: 2.0, s_1_16: '', s_1_8: '0.06', s_1_4: '', s_1_2: '', s_3_4: '', ea_label: '', ea_value: null },
+  { id: 'gr17', name: 'Animal Crackers', category: 'Grain', maxPerContainer: 2.0, s_1_16: '', s_1_8: '0.06', s_1_4: '', s_1_2: '', s_3_4: '', ea_label: '', ea_value: null },
+  { id: 'gr18', name: 'Saltine Crackers', category: 'Grain', maxPerContainer: 150.0, s_1_16: '', s_1_8: '', s_1_4: '', s_1_2: '', s_3_4: '', ea_label: '5 Ea', ea_value: 5 },
+  { id: 'gr19', name: 'Graham Crackers', category: 'Grain', maxPerContainer: 50.0, s_1_16: '', s_1_8: '', s_1_4: '', s_1_2: '', s_3_4: '', ea_label: '1 Ea', ea_value: 1 },
+  { id: 'gr20', name: 'Pitta', category: 'Grain', maxPerContainer: 50.0, s_1_16: '', s_1_8: '', s_1_4: '', s_1_2: '', s_3_4: '', ea_label: '1/4 Ea', ea_value: 0.25 },
+  { id: 'gr21', name: 'Bagel', category: 'Grain', maxPerContainer: 50.0, s_1_16: '', s_1_8: '', s_1_4: '', s_1_2: '', s_3_4: '', ea_label: '1 Ea', ea_value: 1 },
+  { id: 'gr22', name: 'WG Bun', category: 'Grain', maxPerContainer: 50.0, s_1_16: '', s_1_8: '', s_1_4: '', s_1_2: '', s_3_4: '', ea_label: '1 Ea', ea_value: 1 },
+  { id: 'gr23', name: 'WG Sub', category: 'Grain', maxPerContainer: 50.0, s_1_16: '', s_1_8: '', s_1_4: '', s_1_2: '', s_3_4: '', ea_label: '1 Ea', ea_value: 1 },
+  { id: 'gr24', name: 'WG Tortilla', category: 'Grain', maxPerContainer: 50.0, s_1_16: '', s_1_8: '', s_1_4: '', s_1_2: '', s_3_4: '', ea_label: '1 Ea', ea_value: 1 },
+  { id: 'gr25', name: 'Wg Brown Rice', category: 'Grain', maxPerContainer: 2.5, s_1_16: '', s_1_8: '', s_1_4: '0.10', s_1_2: '0.20', s_3_4: '', ea_label: '', ea_value: null },
+  { id: 'gr26', name: 'Wg Penne Pasta', category: 'Grain', maxPerContainer: 2.5, s_1_16: '', s_1_8: '', s_1_4: '0.10', s_1_2: '0.20', s_3_4: '', ea_label: '', ea_value: null },
+  { id: 'gr27', name: 'Wg Elbow Pasta', category: 'Grain', maxPerContainer: 2.5, s_1_16: '', s_1_8: '', s_1_4: '0.10', s_1_2: '0.20', s_3_4: '', ea_label: '', ea_value: null },
+  { id: 'gr28', name: 'Wg Quinoa', category: 'Grain', maxPerContainer: 2.5, s_1_16: '', s_1_8: '', s_1_4: '0.10', s_1_2: '0.20', s_3_4: '', ea_label: '', ea_value: null },
+  { id: 'gr29', name: 'Wg Rotini Pasta', category: 'Grain', maxPerContainer: 2.5, s_1_16: '', s_1_8: '', s_1_4: '0.10', s_1_2: '0.20', s_3_4: '', ea_label: '', ea_value: null },
+  { id: 'gr30', name: 'Wg Spaghetti Pasta', category: 'Grain', maxPerContainer: 2.5, s_1_16: '', s_1_8: '', s_1_4: '0.10', s_1_2: '0.20', s_3_4: '', ea_label: '', ea_value: null },
+  { id: 'gr31', name: 'Granola', category: 'Grain', maxPerContainer: 2.5, s_1_16: '', s_1_8: '0.04', s_1_4: '0.08', s_1_2: '0.16', s_3_4: '', ea_label: '', ea_value: null },
 
   // --- PROTEIN / MAIN ---
-  { id: 'pr1', name: 'Diced Turkey', category: 'Protein/Main', maxPerContainer: 2.5, s_1_8: '', s_1_4: '0.10', s_1_2: '0.20', s_3_4: '', ea_label: '', ea_value: null },
-  { id: 'pr2', name: 'Ground Beef', category: 'Protein/Main', maxPerContainer: 2.5, s_1_8: '', s_1_4: '0.10', s_1_2: '0.20', s_3_4: '', ea_label: '', ea_value: null },
-  { id: 'pr3', name: 'Ground Turkey', category: 'Protein/Main', maxPerContainer: 2.5, s_1_8: '', s_1_4: '0.10', s_1_2: '0.20', s_3_4: '', ea_label: '', ea_value: null },
-  { id: 'pr4', name: 'Chicken', category: 'Protein/Main', maxPerContainer: 2.5, s_1_8: '', s_1_4: '0.10', s_1_2: '0.20', s_3_4: '', ea_label: '', ea_value: null },
-  { id: 'pr5', name: 'Beef (Tacos)', category: 'Protein/Main', maxPerContainer: 2.5, s_1_8: '', s_1_4: '0.14', s_1_2: '', s_3_4: '', ea_label: '', ea_value: null },
-  { id: 'pr6', name: 'Chicken Teriyaki', category: 'Protein/Main', maxPerContainer: 2.5, s_1_8: '', s_1_4: '0.14', s_1_2: '', s_3_4: '', ea_label: '', ea_value: null },
-  { id: 'pr7', name: 'Mac and Cheese', category: 'Protein/Main', maxPerContainer: 2.5, s_1_8: '', s_1_4: '0.15', s_1_2: '', s_3_4: '', ea_label: '', ea_value: null },
-  { id: 'pr8', name: 'Ground Turkey BBQ', category: 'Protein/Main', maxPerContainer: 2.5, s_1_8: '', s_1_4: '0.14', s_1_2: '', s_3_4: '', ea_label: '', ea_value: null },
-  { id: 'pr9', name: 'Ground Beef Picadillo', category: 'Protein/Main', maxPerContainer: 2.5, s_1_8: '', s_1_4: '', s_1_2: '0.30', s_3_4: '', ea_label: '', ea_value: null },
-  { id: 'pr10', name: 'Chili Beef and Bean', category: 'Protein/Main', maxPerContainer: 2.5, s_1_8: '', s_1_4: '', s_1_2: '0.30', s_3_4: '', ea_label: '', ea_value: null },
-  { id: 'pr11', name: 'Chili Bean (vegetarian)', category: 'Protein/Main', maxPerContainer: 2.5, s_1_8: '', s_1_4: '', s_1_2: '0.30', s_3_4: '', ea_label: '', ea_value: null },
-  { id: 'pr12', name: 'Broccoli Pesto W Pasta', category: 'Protein/Main', maxPerContainer: 2.5, s_1_8: '', s_1_4: '0.18', s_1_2: '', s_3_4: '', ea_label: '', ea_value: null },
-  { id: 'pr13', name: 'Roasted Bell Pepper W Pasta', category: 'Protein/Main', maxPerContainer: 2.5, s_1_8: '', s_1_4: '0.18', s_1_2: '', s_3_4: '', ea_label: '', ea_value: null },
-  { id: 'pr14', name: 'Alfredo Sauce W Pasta', category: 'Protein/Main', maxPerContainer: 2.5, s_1_8: '', s_1_4: '0.18', s_1_2: '', s_3_4: '', ea_label: '', ea_value: null },
-  { id: 'pr15', name: 'Beef Sloppy Joe', category: 'Protein/Main', maxPerContainer: 2.5, s_1_8: '', s_1_4: '0.14', s_1_2: '', s_3_4: '', ea_label: '', ea_value: null },
-  { id: 'pr16', name: 'Chicken Salad', category: 'Protein/Main', maxPerContainer: 4.5, s_1_8: '', s_1_4: '0.12', s_1_2: '', s_3_4: '', ea_label: '', ea_value: null },
-  { id: 'pr17', name: 'Meatballs', category: 'Protein/Main', maxPerContainer: 100.0, s_1_8: '', s_1_4: '', s_1_2: '', s_3_4: '', ea_label: '4 Ea', ea_value: 4 },
-  { id: 'pr18', name: 'Chicken Nuggets', category: 'Protein/Main', maxPerContainer: 70.0, s_1_8: '', s_1_4: '', s_1_2: '', s_3_4: '', ea_label: '5 Ea', ea_value: 5 },
-  { id: 'pr19', name: 'Turkey Sausage', category: 'Protein/Main', maxPerContainer: 40.0, s_1_8: '', s_1_4: '', s_1_2: '', s_3_4: '', ea_label: '2 Ea', ea_value: 2 },
-  { id: 'pr20', name: 'Turkey Slice', category: 'Protein/Main', maxPerContainer: 50.0, s_1_8: '', s_1_4: '', s_1_2: '', s_3_4: '', ea_label: '1 Ea', ea_value: 1 },
+  { id: 'pr1', name: 'Diced Turkey', category: 'Protein/Main', maxPerContainer: 2.5, s_1_16: '', s_1_8: '', s_1_4: '0.10', s_1_2: '0.20', s_3_4: '', ea_label: '', ea_value: null },
+  { id: 'pr2', name: 'Ground Beef', category: 'Protein/Main', maxPerContainer: 2.5, s_1_16: '', s_1_8: '', s_1_4: '0.10', s_1_2: '0.20', s_3_4: '', ea_label: '', ea_value: null },
+  { id: 'pr3', name: 'Ground Turkey', category: 'Protein/Main', maxPerContainer: 2.5, s_1_16: '', s_1_8: '', s_1_4: '0.10', s_1_2: '0.20', s_3_4: '', ea_label: '', ea_value: null },
+  { id: 'pr4', name: 'Chicken', category: 'Protein/Main', maxPerContainer: 2.5, s_1_16: '', s_1_8: '', s_1_4: '0.10', s_1_2: '0.20', s_3_4: '', ea_label: '', ea_value: null },
+  { id: 'pr5', name: 'Beef (Tacos)', category: 'Protein/Main', maxPerContainer: 2.5, s_1_16: '', s_1_8: '', s_1_4: '0.14', s_1_2: '', s_3_4: '', ea_label: '', ea_value: null },
+  { id: 'pr6', name: 'Chicken Teriyaki', category: 'Protein/Main', maxPerContainer: 2.5, s_1_16: '', s_1_8: '', s_1_4: '0.14', s_1_2: '', s_3_4: '', ea_label: '', ea_value: null },
+  { id: 'pr7', name: 'Mac and Cheese', category: 'Protein/Main', maxPerContainer: 2.5, s_1_16: '', s_1_8: '', s_1_4: '0.15', s_1_2: '', s_3_4: '', ea_label: '', ea_value: null },
+  { id: 'pr8', name: 'Ground Turkey BBQ', category: 'Protein/Main', maxPerContainer: 2.5, s_1_16: '', s_1_8: '', s_1_4: '0.14', s_1_2: '', s_3_4: '', ea_label: '', ea_value: null },
+  { id: 'pr9', name: 'Ground Beef Picadillo', category: 'Protein/Main', maxPerContainer: 2.5, s_1_16: '', s_1_8: '', s_1_4: '', s_1_2: '0.30', s_3_4: '', ea_label: '', ea_value: null },
+  { id: 'pr10', name: 'Chili Beef and Bean', category: 'Protein/Main', maxPerContainer: 2.5, s_1_16: '', s_1_8: '', s_1_4: '', s_1_2: '0.30', s_3_4: '', ea_label: '', ea_value: null },
+  { id: 'pr11', name: 'Chili Bean (vegetarian)', category: 'Protein/Main', maxPerContainer: 2.5, s_1_16: '', s_1_8: '', s_1_4: '', s_1_2: '0.30', s_3_4: '', ea_label: '', ea_value: null },
+  { id: 'pr12', name: 'Broccoli Pesto W Pasta', category: 'Protein/Main', maxPerContainer: 2.5, s_1_16: '', s_1_8: '', s_1_4: '0.18', s_1_2: '', s_3_4: '', ea_label: '', ea_value: null },
+  { id: 'pr13', name: 'Roasted Bell Pepper W Pasta', category: 'Protein/Main', maxPerContainer: 2.5, s_1_16: '', s_1_8: '', s_1_4: '0.18', s_1_2: '', s_3_4: '', ea_label: '', ea_value: null },
+  { id: 'pr14', name: 'Alfredo Sauce W Pasta', category: 'Protein/Main', maxPerContainer: 2.5, s_1_16: '', s_1_8: '', s_1_4: '0.18', s_1_2: '', s_3_4: '', ea_label: '', ea_value: null },
+  { id: 'pr15', name: 'Beef Sloppy Joe', category: 'Protein/Main', maxPerContainer: 2.5, s_1_16: '', s_1_8: '', s_1_4: '0.14', s_1_2: '', s_3_4: '', ea_label: '', ea_value: null },
+  { id: 'pr16', name: 'Chicken Salad', category: 'Protein/Main', maxPerContainer: 4.5, s_1_16: '', s_1_8: '', s_1_4: '0.12', s_1_2: '', s_3_4: '', ea_label: '', ea_value: null },
+  { id: 'pr17', name: 'Meatballs', category: 'Protein/Main', maxPerContainer: 100.0, s_1_16: '', s_1_8: '', s_1_4: '', s_1_2: '', s_3_4: '', ea_label: '4 Ea', ea_value: 4 },
+  { id: 'pr18', name: 'Chicken Nuggets', category: 'Protein/Main', maxPerContainer: 70.0, s_1_16: '', s_1_8: '', s_1_4: '', s_1_2: '', s_3_4: '', ea_label: '5 Ea', ea_value: 5 },
+  { id: 'pr19', name: 'Turkey Sausage', category: 'Protein/Main', maxPerContainer: 40.0, s_1_16: '', s_1_8: '', s_1_4: '', s_1_2: '', s_3_4: '', ea_label: '2 Ea', ea_value: 2 },
+  { id: 'pr20', name: 'Turkey Slice', category: 'Protein/Main', maxPerContainer: 50.0, s_1_16: '', s_1_8: '', s_1_4: '', s_1_2: '', s_3_4: '', ea_label: '1 Ea', ea_value: 1 },
   
   // --- MISC / SNACK / DAIRY ---
-  { id: 'ms1', name: 'Cheese Slice', category: 'Misc/Snack', maxPerContainer: 50.0, s_1_8: '', s_1_4: '', s_1_2: '', s_3_4: '', ea_label: '1 Ea', ea_value: 1 },
-  { id: 'ms2', name: 'Shredded Cheese', category: 'Misc/Snack', maxPerContainer: 5.0, s_1_8: '0.04', s_1_4: '', s_1_2: '', s_3_4: '', ea_label: '', ea_value: null },
-  { id: 'ms3', name: 'Cottage Cheese', category: 'Misc/Snack', maxPerContainer: 3.5, s_1_8: '0.08', s_1_4: '', s_1_2: '', s_3_4: '', ea_label: '', ea_value: null },
-  { id: 'ms4', name: 'String Cheese', category: 'Misc/Snack', maxPerContainer: 50.0, s_1_8: '', s_1_4: '', s_1_2: '', s_3_4: '', ea_label: '1 Ea', ea_value: 1 },
-  { id: 'ms5', name: 'Cheese Cubes', category: 'Misc/Snack', maxPerContainer: 150.0, s_1_8: '', s_1_4: '', s_1_2: '', s_3_4: '', ea_label: '3 Ea', ea_value: 3 },
-  { id: 'ms6', name: 'Yogurt', category: 'Misc/Snack', maxPerContainer: 3.0, s_1_8: '', s_1_4: '0.14', s_1_2: '0.28', s_3_4: '', ea_label: '', ea_value: null },
-  { id: 'ms7', name: 'Hummus (Snack)', category: 'Misc/Snack', maxPerContainer: 4.0, s_1_8: '0.07', s_1_4: '', s_1_2: '', s_3_4: '', ea_label: '', ea_value: null },
-  { id: 'ms8', name: 'Hard boiled Egg', category: 'Misc/Snack', maxPerContainer: 50.0, s_1_8: '', s_1_4: '', s_1_2: '', s_3_4: '', ea_label: '1 Ea', ea_value: 1 },
-  { id: 'ms9', name: 'Egg Pattie', category: 'Misc/Snack', maxPerContainer: 50.0, s_1_8: '', s_1_4: '', s_1_2: '', s_3_4: '', ea_label: '1 Ea', ea_value: 1 },
-  { id: 'ms10', name: 'Bean DIP', category: 'Misc/Snack', maxPerContainer: 4.0, s_1_8: '', s_1_4: '0.14', s_1_2: '', s_3_4: '', ea_label: '', ea_value: null },
-  { id: 'ms11', name: 'Sunbutter Natural', category: 'Misc/Snack', maxPerContainer: 5.0, s_1_8: '0.08', s_1_4: '', s_1_2: '', s_3_4: '', ea_label: '', ea_value: null },
+  { id: 'ms1', name: 'Cheese Slice', category: 'Misc/Snack', maxPerContainer: 50.0, s_1_16: '', s_1_8: '', s_1_4: '', s_1_2: '', s_3_4: '', ea_label: '1 Ea', ea_value: 1 },
+  { id: 'ms2', name: 'Shredded Cheese', category: 'Misc/Snack', maxPerContainer: 5.0, s_1_16: '0.02', s_1_8: '0.04', s_1_4: '', s_1_2: '', s_3_4: '', ea_label: '', ea_value: null },
+  { id: 'ms3', name: 'Cottage Cheese', category: 'Misc/Snack', maxPerContainer: 3.5, s_1_16: '', s_1_8: '0.08', s_1_4: '', s_1_2: '', s_3_4: '', ea_label: '', ea_value: null },
+  { id: 'ms4', name: 'String Cheese', category: 'Misc/Snack', maxPerContainer: 50.0, s_1_16: '', s_1_8: '', s_1_4: '', s_1_2: '', s_3_4: '', ea_label: '1 Ea', ea_value: 1 },
+  { id: 'ms5', name: 'Cheese Cubes', category: 'Misc/Snack', maxPerContainer: 150.0, s_1_16: '', s_1_8: '', s_1_4: '', s_1_2: '', s_3_4: '', ea_label: '3 Ea', ea_value: 3 },
+  { id: 'ms6', name: 'Yogurt', category: 'Misc/Snack', maxPerContainer: 3.0, s_1_16: '', s_1_8: '', s_1_4: '0.14', s_1_2: '0.28', s_3_4: '', ea_label: '', ea_value: null },
+  { id: 'ms7', name: 'Hummus (Snack)', category: 'Misc/Snack', maxPerContainer: 4.0, s_1_16: '', s_1_8: '0.07', s_1_4: '', s_1_2: '', s_3_4: '', ea_label: '', ea_value: null },
+  { id: 'ms8', name: 'Hard boiled Egg', category: 'Misc/Snack', maxPerContainer: 50.0, s_1_16: '', s_1_8: '', s_1_4: '', s_1_2: '', s_3_4: '', ea_label: '1 Ea', ea_value: 1 },
+  { id: 'ms9', name: 'Egg Pattie', category: 'Misc/Snack', maxPerContainer: 50.0, s_1_16: '', s_1_8: '', s_1_4: '', s_1_2: '', s_3_4: '', ea_label: '1 Ea', ea_value: 1 },
+  { id: 'ms10', name: 'Bean DIP', category: 'Misc/Snack', maxPerContainer: 4.0, s_1_16: '', s_1_8: '', s_1_4: '0.14', s_1_2: '', s_3_4: '', ea_label: '', ea_value: null },
+  { id: 'ms11', name: 'Sunbutter Natural', category: 'Misc/Snack', maxPerContainer: 5.0, s_1_16: '', s_1_8: '0.08', s_1_4: '', s_1_2: '', s_3_4: '', ea_label: '', ea_value: null },
 ];
 
 const INITIAL_TEMPLATES = [
@@ -153,6 +153,7 @@ const DAYS_OF_WEEK = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
 
 const getAvailableOptions = (food: any) => {
   const opts = [];
+  if (food.s_1_16) opts.push({ key: `${food.id}|s_1_16`, food, sizeLabel: '1/16 cup', sizeValue: parseFloat(food.s_1_16), type: 'LBS' });
   if (food.s_1_8) opts.push({ key: `${food.id}|s_1_8`, food, sizeLabel: '1/8 cup', sizeValue: parseFloat(food.s_1_8), type: 'LBS' });
   if (food.s_1_4) opts.push({ key: `${food.id}|s_1_4`, food, sizeLabel: '1/4 cup', sizeValue: parseFloat(food.s_1_4), type: 'LBS' });
   if (food.s_1_2) opts.push({ key: `${food.id}|s_1_2`, food, sizeLabel: '1/2 cup', sizeValue: parseFloat(food.s_1_2), type: 'LBS' });
@@ -165,13 +166,13 @@ const AppContext = createContext<any>(null);
 const useAppContext = () => useContext(AppContext);
 
 export const AppProvider = ({ children }: { children: React.ReactNode }) => {
-  // Using v5 for fresh data wipe since the food catalog is vastly different
-  const [schools, setSchools] = useState(() => JSON.parse(localStorage.getItem('ml_schools_v5') || 'null') || INITIAL_SCHOOLS);
-  const [foodCatalog, setFoodCatalog] = useState(() => JSON.parse(localStorage.getItem('ml_food_v5') || 'null') || INITIAL_FOOD_CATALOG);
-  const [templates, setTemplates] = useState(() => JSON.parse(localStorage.getItem('ml_templates_v5') || 'null') || INITIAL_TEMPLATES);
-  const [weeklyCounts, setWeeklyCounts] = useState(() => JSON.parse(localStorage.getItem('ml_weekly_counts_v5') || 'null') || {});
-  const [weeklyMenuIds, setWeeklyMenuIds] = useState(() => JSON.parse(localStorage.getItem('ml_weekly_menu_v5') || 'null') || {});
-  const [weeklyOverrides, setWeeklyOverrides] = useState(() => JSON.parse(localStorage.getItem('ml_weekly_overrides_v5') || 'null') || {});
+  // Using v6 for fresh data wipe to support the new 1/16 column
+  const [schools, setSchools] = useState(() => JSON.parse(localStorage.getItem('ml_schools_v6') || 'null') || INITIAL_SCHOOLS);
+  const [foodCatalog, setFoodCatalog] = useState(() => JSON.parse(localStorage.getItem('ml_food_v6') || 'null') || INITIAL_FOOD_CATALOG);
+  const [templates, setTemplates] = useState(() => JSON.parse(localStorage.getItem('ml_templates_v6') || 'null') || INITIAL_TEMPLATES);
+  const [weeklyCounts, setWeeklyCounts] = useState(() => JSON.parse(localStorage.getItem('ml_weekly_counts_v6') || 'null') || {});
+  const [weeklyMenuIds, setWeeklyMenuIds] = useState(() => JSON.parse(localStorage.getItem('ml_weekly_menu_v6') || 'null') || {});
+  const [weeklyOverrides, setWeeklyOverrides] = useState(() => JSON.parse(localStorage.getItem('ml_weekly_overrides_v6') || 'null') || {});
   const [selectedDay, setSelectedDay] = useState('Monday');
   
   const getDefaultDate = () => {
@@ -180,15 +181,15 @@ export const AppProvider = ({ children }: { children: React.ReactNode }) => {
     const diff = d.getDate() - day + (day === 0 ? -6 : 1); 
     return new Date(d.setDate(diff)).toISOString().split('T')[0];
   };
-  const [weekStartDate, setWeekStartDate] = useState(() => localStorage.getItem('ml_week_start_v5') || getDefaultDate());
+  const [weekStartDate, setWeekStartDate] = useState(() => localStorage.getItem('ml_week_start_v6') || getDefaultDate());
 
-  useEffect(() => { localStorage.setItem('ml_schools_v5', JSON.stringify(schools)); }, [schools]);
-  useEffect(() => { localStorage.setItem('ml_food_v5', JSON.stringify(foodCatalog)); }, [foodCatalog]);
-  useEffect(() => { localStorage.setItem('ml_templates_v5', JSON.stringify(templates)); }, [templates]);
-  useEffect(() => { localStorage.setItem('ml_weekly_counts_v5', JSON.stringify(weeklyCounts)); }, [weeklyCounts]);
-  useEffect(() => { localStorage.setItem('ml_weekly_menu_v5', JSON.stringify(weeklyMenuIds)); }, [weeklyMenuIds]);
-  useEffect(() => { localStorage.setItem('ml_weekly_overrides_v5', JSON.stringify(weeklyOverrides)); }, [weeklyOverrides]);
-  useEffect(() => { localStorage.setItem('ml_week_start_v5', weekStartDate); }, [weekStartDate]);
+  useEffect(() => { localStorage.setItem('ml_schools_v6', JSON.stringify(schools)); }, [schools]);
+  useEffect(() => { localStorage.setItem('ml_food_v6', JSON.stringify(foodCatalog)); }, [foodCatalog]);
+  useEffect(() => { localStorage.setItem('ml_templates_v6', JSON.stringify(templates)); }, [templates]);
+  useEffect(() => { localStorage.setItem('ml_weekly_counts_v6', JSON.stringify(weeklyCounts)); }, [weeklyCounts]);
+  useEffect(() => { localStorage.setItem('ml_weekly_menu_v6', JSON.stringify(weeklyMenuIds)); }, [weeklyMenuIds]);
+  useEffect(() => { localStorage.setItem('ml_weekly_overrides_v6', JSON.stringify(weeklyOverrides)); }, [weeklyOverrides]);
+  useEffect(() => { localStorage.setItem('ml_week_start_v6', weekStartDate); }, [weekStartDate]);
 
   return (
     <AppContext.Provider value={{
@@ -343,6 +344,7 @@ const ItemsTab = () => {
   const [name, setName] = useState('');
   const [category, setCategory] = useState(CATEGORIES[0]);
   const [max, setMax] = useState('');
+  const [s116, setS116] = useState('');
   const [s18, setS18] = useState('');
   const [s14, setS14] = useState('');
   const [s12, setS12] = useState('');
@@ -354,10 +356,10 @@ const ItemsTab = () => {
     if (!name || !max) return;
     setFoodCatalog([...foodCatalog, {
       id: `f${Date.now()}`, name, category, maxPerContainer: parseFloat(max),
-      s_1_8: s18, s_1_4: s14, s_1_2: s12, s_3_4: s34,
+      s_1_16: s116, s_1_8: s18, s_1_4: s14, s_1_2: s12, s_3_4: s34,
       ea_label: eaLbl, ea_value: eaVal ? parseFloat(eaVal) : null
     }]);
-    setName(''); setMax(''); setS18(''); setS14(''); setS12(''); setS34(''); setEaLbl(''); setEaVal('');
+    setName(''); setMax(''); setS116(''); setS18(''); setS14(''); setS12(''); setS34(''); setEaLbl(''); setEaVal('');
   };
 
   return (
@@ -374,6 +376,7 @@ const ItemsTab = () => {
               <th className="px-4 py-3 text-left font-semibold uppercase tracking-wider">Product Name</th>
               <th className="px-4 py-3 text-left font-semibold uppercase tracking-wider">Category</th>
               <th className="px-2 py-3 text-center font-semibold uppercase tracking-wider bg-red-900" title="Max Per Bag (LBS or Count)">Max/Bag</th>
+              <th className="px-2 py-3 text-center font-semibold uppercase tracking-wider">1/16 cup</th>
               <th className="px-2 py-3 text-center font-semibold uppercase tracking-wider">1/8 cup</th>
               <th className="px-2 py-3 text-center font-semibold uppercase tracking-wider">1/4 cup</th>
               <th className="px-2 py-3 text-center font-semibold uppercase tracking-wider">1/2 cup</th>
@@ -388,6 +391,7 @@ const ItemsTab = () => {
                 <td className="px-4 py-3 font-medium text-gray-900">{food.name}</td>
                 <td className="px-4 py-3 text-gray-600">{food.category}</td>
                 <td className="px-2 py-3 text-center font-bold text-red-700">{food.maxPerContainer}</td>
+                <td className="px-2 py-3 text-center text-gray-600">{food.s_1_16 || '-'}</td>
                 <td className="px-2 py-3 text-center text-gray-600">{food.s_1_8 || '-'}</td>
                 <td className="px-2 py-3 text-center text-gray-600">{food.s_1_4 || '-'}</td>
                 <td className="px-2 py-3 text-center text-gray-600">{food.s_1_2 || '-'}</td>
@@ -408,6 +412,7 @@ const ItemsTab = () => {
                 </select>
               </td>
               <td className="p-2"><input type="number" step="0.1" placeholder="Max" value={max} onChange={e=>setMax(e.target.value)} className="w-16 p-1 border border-gray-300 rounded text-center shadow-sm" /></td>
+              <td className="p-2"><input type="number" step="0.01" placeholder="LBS" value={s116} onChange={e=>setS116(e.target.value)} className="w-16 p-1 border border-gray-300 rounded text-center shadow-sm" /></td>
               <td className="p-2"><input type="number" step="0.01" placeholder="LBS" value={s18} onChange={e=>setS18(e.target.value)} className="w-16 p-1 border border-gray-300 rounded text-center shadow-sm" /></td>
               <td className="p-2"><input type="number" step="0.01" placeholder="LBS" value={s14} onChange={e=>setS14(e.target.value)} className="w-16 p-1 border border-gray-300 rounded text-center shadow-sm" /></td>
               <td className="p-2"><input type="number" step="0.01" placeholder="LBS" value={s12} onChange={e=>setS12(e.target.value)} className="w-16 p-1 border border-gray-300 rounded text-center shadow-sm" /></td>
@@ -660,18 +665,22 @@ const ReviewTab = () => {
         const studentCount = dayCounts[school.id]?.[mealType] || 0;
         if (studentCount <= 0) return;
 
-        const sizeValue = sKey === 'ea' ? item.ea_value : item[sKey];
-        if (!sizeValue) return;
-
-        const sizeLabel = sKey === 'ea' ? item.ea_label : sKey.replace('s_', '').replace('_', '/') + ' cup';
         const isEa = sKey === 'ea';
-        const dailyRawTotal = studentCount * parseFloat(sizeValue);
+        const sizeValue = isEa ? item.ea_value : item[sKey];
+        if (!isEa && !sizeValue) return;
+
+        const sizeLabel = isEa ? item.ea_label || 'EA' : sKey.replace('s_', '').replace('_', '/') + ' cup';
+        const eaValue = isEa ? (parseFloat(item.ea_value) || 1) : null;
+        
+        // Calculation Logic:
+        // EA items: 1 serving = 1 student. Weight items: student count * weight.
+        const dailyRawTotal = isEa ? studentCount : studentCount * parseFloat(sizeValue);
         const aggKey = `${school.id}-${menuKey}`;
 
         if (!schoolAggregations[aggKey]) {
           schoolAggregations[aggKey] = {
             school, itemKey: menuKey, mealType, itemName: item.name, 
-            sizeLabel, max: item.maxPerContainer, isEa, totalRaw: 0,
+            sizeLabel, max: item.maxPerContainer, isEa, eaValue, totalRaw: 0,
             servingDays: [], aggKey
           };
         }
@@ -712,8 +721,10 @@ const ReviewTab = () => {
             </thead>
             <tbody className="bg-white divide-y divide-gray-200">
               {rows.map(r => {
-                const displayTotal = r.isEa ? `${Math.ceil(r.totalRaw)} EA` : `${r.totalRaw.toFixed(2)} LBS`;
-                const stdContainers = Math.ceil(r.totalRaw / r.max);
+                // Round up EA items to the nearest package size multiple
+                const finalTotal = r.isEa && r.eaValue ? Math.ceil(r.totalRaw / r.eaValue) * r.eaValue : r.totalRaw;
+                const displayTotal = r.isEa ? `${finalTotal} EA` : `${finalTotal.toFixed(2)} LBS`;
+                const stdContainers = Math.ceil(finalTotal / r.max);
                 const currentOverride = weeklyOverrides[r.aggKey];
 
                 return (
@@ -721,7 +732,15 @@ const ReviewTab = () => {
                     <td className="px-6 py-4 whitespace-nowrap"><div className="font-bold text-gray-900">{r.school.code}</div><div className="text-xs text-gray-500">{r.school.name}</div></td>
                     <td className="px-6 py-4 whitespace-nowrap"><div className="text-sm font-medium">{r.itemName}</div><div className="text-xs text-gray-500">{r.mealType} • {r.sizeLabel}</div></td>
                     <td className="px-6 py-4 whitespace-nowrap text-center text-xs font-semibold text-gray-700">{r.servingDays.join(', ')}</td>
-                    <td className="px-6 py-4 whitespace-nowrap"><div className="text-sm font-bold text-gray-900">{displayTotal}</div><div className={`text-xs ${currentOverride ? "line-through text-gray-400" : "text-gray-500"}`}>Standard: {stdContainers} containers</div></td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      <div className="text-sm font-bold text-gray-900">{displayTotal}</div>
+                      {r.isEa && r.eaValue > 1 && (
+                        <div className="text-[10px] text-blue-600 mb-1 font-semibold">
+                          Students: {r.totalRaw} (Rnd to {r.eaValue}s)
+                        </div>
+                      )}
+                      <div className={`text-xs ${currentOverride ? "line-through text-gray-400" : "text-gray-500"}`}>Standard: {stdContainers} containers</div>
+                    </td>
                     <td className="px-6 py-4 whitespace-nowrap text-right">
                       <input type="number" min="1" placeholder="Auto" value={currentOverride || ''} onChange={(e) => handleOverride(r.aggKey, e.target.value)} className={`w-20 rounded-md shadow-sm sm:text-sm p-2 border ${currentOverride ? 'border-orange-500 ring-1 ring-orange-500 bg-orange-50' : 'border-gray-300 focus:border-blue-500'}`} />
                     </td>
@@ -741,9 +760,11 @@ const PrintTab = () => {
 
   const getWeekDateRange = () => {
     if (!weekStartDate) return '';
-    const start = new Date(weekStartDate + 'T12:00:00'); 
-    const end = new Date(weekStartDate + 'T12:00:00');
+    const [year, month, day] = weekStartDate.split('-');
+    const start = new Date(parseInt(year), parseInt(month) - 1, parseInt(day), 12, 0, 0);
+    const end = new Date(start);
     end.setDate(end.getDate() + 4); 
+    
     const formatZero = (n: number) => n < 10 ? '0' + n : n;
     return `${formatZero(start.getMonth() + 1)}/${formatZero(start.getDate())}-${formatZero(end.getMonth() + 1)}/${formatZero(end.getDate())}`;
   };
@@ -767,19 +788,22 @@ const PrintTab = () => {
           const item = foodCatalog.find((f: any) => f.id === fId);
           if (!item) return;
 
-          const sizeValue = sKey === 'ea' ? item.ea_value : item[sKey];
-          if (!sizeValue) return;
-
           const isEa = sKey === 'ea';
-          const sizeLabel = isEa ? item.ea_label : sKey.replace('s_', '').replace('_', '/') + ' CUP';
-          const dailyRawTotal = studentCount * parseFloat(sizeValue);
+          const sizeValue = isEa ? item.ea_value : item[sKey];
+          if (!isEa && !sizeValue) return;
+
+          const sizeLabel = isEa ? item.ea_label || 'EA' : sKey.replace('s_', '').replace('_', '/') + ' CUP';
+          const eaValue = isEa ? (parseFloat(item.ea_value) || 1) : null;
+          
+          // Same logic as Review Tab
+          const dailyRawTotal = isEa ? studentCount : studentCount * parseFloat(sizeValue);
           const aggKey = `${school.id}-${menuKey}`;
           const displayMealType = mealType.toUpperCase() === 'BREAKFAST' ? 'BK' : mealType.toUpperCase();
           
           if (!schoolAggregations[aggKey]) {
             schoolAggregations[aggKey] = {
               schoolCode: school.code, itemName: item.name, mealType: displayMealType,
-              servingSize: sizeLabel, isEa, max: item.maxPerContainer, totalRaw: 0, aggKey
+              servingSize: sizeLabel, isEa, max: item.maxPerContainer, eaValue, totalRaw: 0, aggKey
             };
           }
           schoolAggregations[aggKey].totalRaw += dailyRawTotal;
@@ -787,10 +811,13 @@ const PrintTab = () => {
       });
 
       Object.values(schoolAggregations).forEach((agg: any) => {
-        let totalContainers = weeklyOverrides[agg.aggKey] || Math.ceil(agg.totalRaw / agg.max);
+        // Round up EA items to the nearest package size multiple
+        const finalTotal = agg.isEa && agg.eaValue ? Math.ceil(agg.totalRaw / agg.eaValue) * agg.eaValue : agg.totalRaw;
+        
+        let totalContainers = weeklyOverrides[agg.aggKey] || Math.ceil(finalTotal / agg.max);
         totalContainers = Math.max(1, totalContainers); 
         
-        const valuePerContainer = (agg.totalRaw / totalContainers);
+        const valuePerContainer = (finalTotal / totalContainers);
         const displayValue = agg.isEa ? Math.ceil(valuePerContainer) + ' EA' : valuePerContainer.toFixed(2) + ' LBS';
 
         for (let i = 1; i <= totalContainers; i++) {
@@ -817,7 +844,7 @@ const PrintTab = () => {
         <div className="flex items-center gap-4">
           <div>
              <label className="block text-xs font-bold text-gray-700 mb-1">Week Of (Monday)</label>
-             <input type="date" value={weekStartDate} onChange={(e) => setWeekStartDate(e.target.value)} className="w-40 rounded-md border-gray-300 shadow-sm sm:text-sm p-2 border" />
+             <input type="date" value={weekStartDate} onChange={(e) => setWeekStartDate(e.target.value)} className="w-40 rounded-md border-gray-300 shadow-sm sm:text-sm p-2 border bg-white" />
           </div>
           <button onClick={() => window.print()} disabled={generatedLabels.length === 0} className="bg-blue-600 hover:bg-blue-700 disabled:bg-gray-300 disabled:cursor-not-allowed text-white px-4 py-2 rounded-lg font-medium flex items-center gap-2 mt-5 transition-colors">
             <Printer size={18} /> Print {generatedLabels.length} Labels
@@ -841,7 +868,9 @@ const PrintTab = () => {
               #print-section, #print-section * { visibility: visible; }
               #print-section { position: absolute; left: 0; top: 0; width: 100%; margin: 0; }
               .no-print { display: none !important; }
-              @page { size: letter; margin: 0.5in 0.1875in; }
+              
+              @page { size: letter; margin: 0.5in 0.1875in 0.5in 0.1875in; }
+              
               .avery-grid {
                 display: grid !important;
                 grid-template-columns: repeat(3, 2.625in) !important;
@@ -863,13 +892,13 @@ const PrintTab = () => {
         </style>
         <div className="avery-grid grid grid-cols-1 md:grid-cols-3 gap-4 print:gap-0">
           {generatedLabels.map((label: any) => (
-            <div key={label.id} className="avery-label border border-dashed border-gray-400 font-bold flex flex-col justify-center text-[11px] leading-[1.2] text-black w-[2.625in] h-[1in] mx-auto md:mx-0">
-               <div className="uppercase text-center mb-1">{label.schoolCode} {label.mealType}:{label.itemName}</div>
-               <div className="flex justify-between px-4">
+            <div key={label.id} className="avery-label border border-dashed border-gray-400 font-bold flex flex-col justify-center text-[10px] leading-[1.3] text-black w-[2.625in] h-[1in] mx-auto md:mx-0">
+               <div className="uppercase text-center mb-[2px]"><span className="mr-1">{label.schoolCode}</span> {label.mealType}:{label.itemName}</div>
+               <div className="flex justify-between px-6">
                  <span>{label.servingSize}</span>
                  <span>{label.dateRangeStr}</span>
                </div>
-               <div className="flex justify-between px-4">
+               <div className="flex justify-between px-6">
                  <span>{label.totalUnit}</span>
                  <span>{label.currentContainer}-{label.totalContainers}</span>
                </div>
